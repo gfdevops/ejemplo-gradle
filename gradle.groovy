@@ -15,6 +15,7 @@ def call(){
                             def scannerHome = tool 'sonar-scanner';
                             withSonarQubeEnv('sonar-server') { // If you have configured more than one global server connection, you can specify its name
                             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
+                        }
                     }
                     stage("Run") {
                         sh 'bash gradlew bootRun &'
@@ -28,8 +29,9 @@ def call(){
                         packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'jar', 
                         filePath: 'build/libs/DevOpsUsach2020-0.0.1.jar']], 
                         mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'DevOpsUsach2020', version: '1.0.0']]]
-                    }  }
+                    }  
 
 }
+  
 
 return this;
