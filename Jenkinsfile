@@ -15,7 +15,7 @@ pipeline {
                             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
                     }
                     stage("Run") {
-                        sh 'gradlew bootRun &'
+                        sh 'bash gradlew bootRun &'
                         sleep 20
                     }
                     stage("Rest") {
