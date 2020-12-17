@@ -7,21 +7,16 @@ pipeline {
             steps {
                 script {
                     
-                    echo params.herramienta
+                    echo 'EJECUTANDO => '+params.herramienta
                     def ejecucion
 
                     if (params.herramienta == 'gradle') {
-                        echo 'ejecutando ejecucion.call() para GRADLE'
                         ejecucion = load 'gradle.groovy'
                     }else  {
-                        echo 'ejecutando ejecucion.call() para MAVEN'
                         ejecucion = load 'maven.groovy'
                         
                     }
-                    echo 'before'
                     ejecucion.call()
-                    echo 'after'
-
                 }
             }
         }
