@@ -18,7 +18,10 @@ pipeline {
                         ejecucion = load 'maven.groovy'
                         
                     }
+                    echo 'before'
                     ejecucion.call()
+                    echo 'after'
+
                 }
             }
         }
