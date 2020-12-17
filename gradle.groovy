@@ -6,7 +6,6 @@
 
 def call(){
   
-  stage(){
                     stage("Build & test") {
                         sh "./gradlew clean build"
                         sh "./gradlew clean build"
@@ -31,7 +30,6 @@ def call(){
                         mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'DevOpsUsach2020', version: '1.0.0']]]
                     }  
 
-        }
 }
 
 return this;
