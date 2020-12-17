@@ -19,7 +19,7 @@ pipeline {
                         sleep 20
                     }
                     stage("Rest") {
-                        sh "curl -X GET 'http://localhost:8082/rest/mscovid/test?msg=testing'"
+                        sh "curl -X GET 'http://localhost:8085/rest/mscovid/test?msg=testing'"
                     }
                     stage("Nexus") {
                         nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-repo', 
