@@ -12,7 +12,7 @@ pipeline {
                     if (params.herramienta == 'gradle') {
                         def ejecucion = load 'gradle.groovy'
                         ejecucion.call()
-                    }else if (params.herramienta == 'maven')  {
+                    }else  {
                         def ejecucion = load 'maven.groovy'
                         ejecucion.call()
                     }
