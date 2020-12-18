@@ -1,6 +1,6 @@
 def ejecucion
-def success_msg: 'Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Exitosa',
-def failure_msg: 'Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Fallida en stage [${env.JENKINS_STAGE}]',
+def success_msg: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Exitosa",
+def failure_msg: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Fallida en stage [${env.JENKINS_STAGE}]",
 
 pipeline {
     agent any
@@ -30,10 +30,12 @@ pipeline {
 
     post {
         success {
+            echo 'ENVIANDO MENSAJE SLACK '+success_msg
             slackSend color: "good", message: success_msg
         }
         failure {
-            slackSend color: "good", message: failure_msg
+            echo 'ENVIANDO MENSAJE SLACK '+failure_msg
+            slackSend color: "danger", message: failure_msg
         }
     }
 }
