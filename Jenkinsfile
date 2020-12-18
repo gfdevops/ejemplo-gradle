@@ -10,10 +10,6 @@ pipeline {
         JENKINS_STAGE = ''
     }
 
-    
-    // def success_msg = "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Exitosa",
-    // def failure_msg = "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Fallida en stage [${env.JENKINS_STAGE}]",
-
     stages {
         stage('Pipeline') {
             steps {
@@ -35,12 +31,12 @@ pipeline {
 
     post {
         success {
-            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Exitosa"
-            slackSend color: "good", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Exitosa"
+            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Exitosa"
+            slackSend color: "good", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Exitosa"
         }
         failure {
-            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Fallida en stage [${env.JENKINS_STAGE}]"
-            slackSend color: "danger", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Fallida en stage [${env.JENKINS_STAGE}]"
+            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Fallida en stage [${env.JENKINS_STAGE}]"
+            slackSend color: "danger", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Fallida en stage [${env.JENKINS_STAGE}]"
         }
     }
 }
