@@ -7,7 +7,7 @@ pipeline {
         }
 
     environment {
-        JENKINS_STAGE = ''
+        env.JENKINS_STAGE = ''
     }
 
     stages {
