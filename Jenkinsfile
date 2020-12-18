@@ -18,10 +18,10 @@ pipeline {
         stage('Pipeline') {
             steps {
                 script {
-                    echo 'EJECUTANDO => '+params.herramienta
+                    echo 'EJECUTANDO => '+params.HERRAMIENTA
                     def ejecucion
 
-                    if (params.herramienta == 'gradle') {
+                    if (params.HERRAMIENTA == 'gradle') {
                         ejecucion = load 'gradle.groovy'
                     }else  {
                         ejecucion = load 'maven.groovy'
