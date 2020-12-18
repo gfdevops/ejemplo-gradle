@@ -21,7 +21,6 @@ pipeline {
                         ejecucion = load 'gradle.groovy'
                     }else  {
                         ejecucion = load 'maven.groovy'
-                        
                     }
                     ejecucion.call()
                 }
@@ -31,14 +30,14 @@ pipeline {
 
     post {
         success {
-            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Exitosa"
-            slackSend color: "good", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Exitosa", 
-            teamDomain: 'devops-usach-2020', tokenCredentialId: 'slacktoken'
+            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]["+params.HERRAMIENTA+"] Ejecución Exitosa"
+            slackSend color: "good", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]["+params.HERRAMIENTA+"] Ejecución Exitosa", 
+            teamDomain: 'devops-usach-2020', tokenCredentialId: 'slack-credentials'
         }
         failure {
-            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Fallida en stage [${env.JENKINS_STAGE}]"
-            slackSend color: "danger", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]"+params.HERRAMIENTA+" Ejecución Fallida en stage [${env.JENKINS_STAGE}]", 
-            teamDomain: 'devops-usach-2020', tokenCredentialId: 'slacktoken'
+            echo 'ENVIANDO MENSAJE SLACK '+"Build Success: [Gerardo Felmer][${env.JOB_NAME}]["+params.HERRAMIENTA+"] Ejecución Fallida en stage [${env.JENKINS_STAGE}]"
+            slackSend color: "danger", message: "Build Success: [Gerardo Felmer][${env.JOB_NAME}]["+params.HERRAMIENTA+"] Ejecución Fallida en stage [${env.JENKINS_STAGE}]", 
+            teamDomain: 'devops-usach-2020', tokenCredentialId: 'slack-credentials'
         }
     }
 }
