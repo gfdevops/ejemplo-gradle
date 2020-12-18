@@ -10,7 +10,7 @@ pipeline {
         JENKINS_STAGE = ''
     }
 
-    def ejecucion
+    
     // def success_msg = "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Exitosa",
     // def failure_msg = "Build Success: [Gerardo Felmer][${env.JOB_NAME}]'+params.HERRAMIENTA+' Ejecución Fallida en stage [${env.JENKINS_STAGE}]",
 
@@ -18,10 +18,14 @@ pipeline {
         stage('Pipeline') {
             steps {
                 script {
-                    if (params.HERRAMIENTA == 'gradle') {
+                    echo 'EJECUTANDO => '+params.herramienta
+                    def ejecucion
+
+                    if (params.herramienta == 'gradle') {
                         ejecucion = load 'gradle.groovy'
                     }else  {
                         ejecucion = load 'maven.groovy'
+                        
                     }
                     ejecucion.call()
                 }
