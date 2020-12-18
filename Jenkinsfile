@@ -6,15 +6,14 @@ pipeline {
         choice(name: 'HERRAMIENTA', choices: ['gradle', 'maven'], description: '') 
         }
 
-    environment {
-        env.JENKINS_STAGE = ''
-    }
-
     stages {
         stage('Pipeline') {
             steps {
                 script {
                     echo 'EJECUTANDO => '+params.HERRAMIENTA
+
+                    env.JENKINS_STAGE = ''
+
                     def ejecucion
 
                     if (params.HERRAMIENTA == 'gradle') {
